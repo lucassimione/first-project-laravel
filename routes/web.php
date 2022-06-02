@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $nome = 'Lucas Rodrigues Simione';
     $arr = ['Lucas', 'Felipe', 'Maiker'];
-    
+
     return view('welcome', 
         ['nome' => $nome, 
         'arr' => $arr
@@ -28,5 +28,6 @@ Route::get('/contato', function () {
 });
 
 Route::get('/produto', function () {
-    return view('contact');
+    return view('product');
 });
+

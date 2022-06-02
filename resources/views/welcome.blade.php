@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts/main') {{-- Extende o arquivo (como se fosse o include), primeiro indicando a pasta (layouts) e depois o arquivo (main). --}}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('title', 'HDC Events') {{-- Indica o yield da página extendida ('title') e qual valor ele deve ser atribuído ('HDC Events') --}}
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/scripts.js"> </script>
-</head>
-
-<body class="antialiased">
-    @if(10 < 15)
+@section('content')
+@if(10 < 15) 
     <h1>Seja bem-vindo, {{$nome}} !</h1>
-    @endif
+@endif
 
-    @for($i = 0; $i < count($arr); $i++):
-        <p>{{$arr[$i]}}</p> {{-- Comentário que não é imprimido na estrutura do HTML --}}
-    @endfor
-</body>
-
-</html>
+@for($i = 0; $i < count($arr); $i++): 
+    <p>{{$arr[$i]}}</p> {{-- Comentário que não é imprimido na estrutura do HTML --}}
+@endfor
+@endsection
