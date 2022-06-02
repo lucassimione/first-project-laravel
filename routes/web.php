@@ -12,30 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 
-Route::get('/', function () {
-    $nome = 'Lucas Rodrigues Simione';
-    $arr = ['Lucas', 'Felipe', 'Maiker'];
-
-    return view('welcome', 
-        ['nome' => $nome, 
-        'arr' => $arr
-        ]);
-});
-
-Route::get('/contato', function () {
-    return view('contact');
-});
-
-Route::get('/produtos', function () {
-    $busca = request('search');
-    return view('products', ['busca' => $busca]);
-    
-});
-
-Route::get('/produtos/{id}', function ($id) {
-    return view('product', 
-    ['id' => $id
-    ]);
-});
-
+Route::get('/', [EventController::class, 'index']); // indicando qual controller será acionado a partir da requisição dessa rota
+Route::get('/events/create', [EventController::class, 'create']); // indicando qual controller será acionado a partir da requisição dessa rota
+Route::get('/contact', [ContactController::class, '__construct']); // indicando qual controller será acionado a partir da requisição dessa rota
+Route::get('/products', [ProductController::class, 'exibirProdutos']); // indicando qual controller será acionado a partir da requisição dessa rota
+Route::get('/product/{id}', [ProductController::class, 'exibirProduto']); // indicando qual controller será acionado a partir da requisição dessa rota
