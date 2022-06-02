@@ -3,5 +3,7 @@
 @section('title', 'Produtos')
 
 @section('content')
-<p>Produtos.</p>
+@if(isset($busca))
+<p>Você está atrás do produto {{ $busca }} ?</p>
+@endif
 @endsection

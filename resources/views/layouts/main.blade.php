@@ -20,6 +20,26 @@
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbar"></div>
+            <a href="/" class="navbar-brand">
+                <img src="/img/hdcevents_logo.svg" alt="HDC Events">
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Criar eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Entrar/Cadastrar</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
     @yield('content')
     <footer>
         <p>HDC Events &copy; 2022</p>
