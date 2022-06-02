@@ -27,7 +27,11 @@ Route::get('/contato', function () {
     return view('contact');
 });
 
-Route::get('/produto', function () {
-    return view('product');
+Route::get('/produtos', function () {
+    return view('products');
+});
+
+Route::get('/produto/{id}', function () {
+    return view('product', ['id' => $id]);
 });
 
