@@ -409,6 +409,9 @@
     <h1>Seja bem-vindo, {{$nome}} !</h1>
     @endif
 
+    @for($i = 0; $i < count($arr); $i++):
+        <p>{{$arr[$i]}}</p> {{-- Comentário que não é imprimido na estrutura do HTML --}}
+    @endfor
 </body>
 
 </html>
