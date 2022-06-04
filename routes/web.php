@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProductController;
+
 
 Route::get('/', [EventController::class, 'index']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::get('/events/create', [EventController::class, 'create']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::get('/contact', [ContactController::class, '__construct']); // indicando qual controller será acionado a partir da requisição dessa rota
+Route::post('/events', [EventController::class, 'store']); 
