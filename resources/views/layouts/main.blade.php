@@ -22,7 +22,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse" id="navbar"></div>
+            <div class="collapse navbar-collapse" id="navbar">
             <a href="/" class="navbar-brand">
                 <img src="/img/hdcevents_logo.svg" alt="HDC Events">
             </a>
@@ -40,6 +40,7 @@
                     <a href="/" class="nav-link">Cadastrar</a>
                 </li>
             </ul>
+            </div>
         </nav>
 
     </header>

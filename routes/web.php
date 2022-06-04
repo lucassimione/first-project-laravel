@@ -19,5 +19,3 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [EventController::class, 'index']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::get('/events/create', [EventController::class, 'create']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::get('/contact', [ContactController::class, '__construct']); // indicando qual controller será acionado a partir da requisição dessa rota
-Route::get('/products', [ProductController::class, 'exibirProdutos']); // indicando qual controller será acionado a partir da requisição dessa rota
-Route::get('/product/{id}', [ProductController::class, 'exibirProduto']); // indicando qual controller será acionado a partir da requisição dessa rota

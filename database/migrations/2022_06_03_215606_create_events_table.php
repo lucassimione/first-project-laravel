@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100); // 100 é a limitação do campo -> varchar(100)
-            $table->integer('qtd');
-            $table->text('description'); // cadeia de caracteres muito grande
             $table->timestamps();
+            $table->string("title");
+            $table->string("city");
+            $table->text("description");
+            $table->boolean("private");
         });
     }
 
@@ -29,6 +30,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('events');
     }
 }
