@@ -11,6 +11,7 @@
             </div>
             <div id="info-container" class="col-md-6">
                 <h1>{{ $event->title }}</h1>
+                <p>Data do evento: {{ date('d/m/Y', strtotime($event->date)) }}</p>
                 <p class="event-city"> <ion-icon name="location-outline"></ion-icon>{{ $event->city }}</p>
                 <p class="events-participants"><ion-icon name="people-outline"></ion-icon>X Participantes</p>
                 <p class="event-owner"><ion-icon name="star-outline"></ion-icon>Dono do evento</p>
