@@ -18,5 +18,7 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [EventController::class, 'index']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::get('/events/create', [EventController::class, 'create']); // indicando qual controller será acionado a partir da requisição dessa rota
-Route::get('/contact', [ContactController::class, '__construct']); // indicando qual controller será acionado a partir da requisição dessa rota
+Route::get('/events/{id}', [EventController::class, 'show']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::post('/events', [EventController::class, 'store']); 
+
+Route::get('/contact', [ContactController::class, 'index']); // indicando qual controller será acionado a partir da requisição dessa rota
