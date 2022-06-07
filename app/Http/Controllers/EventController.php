@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 
 class EventController extends Controller
 {
@@ -36,6 +37,7 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->items = $request->items;
 
+
         // Image upload
         if($request->hasFile('image') && $request->file('image')->isValid()) // Verificando se foi inserido uma imagem e se essa imagem inserida é válida
         {
@@ -50,6 +52,9 @@ class EventController extends Controller
             $event->image = $imageName; // persistindo o nome da imagem no banco de dados
         }
 
+        $user = auth()->user();
+        $event->user_id = $user->id;
+
         $event->save();
 
         return redirect('/')->with('msg', 'Evento criado com sucesso!');
@@ -59,6 +64,7 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
 
-        return view('events.show', ['event' => $event]);
+        $eventOwner = User::where('id', $event->user_id)->first()->toArray();
+        return view('events.show', ['event' => $event, 'eventOwner'  => $eventOwner]);
     }
 }
