@@ -21,11 +21,25 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $event = new Event();
-
+    
         $event->title = $request->title;
         $event->city = $request->city;
         $event->private = $request->private;
         $event->description = $request->description;
+
+        // Image upload
+        if($request->hasFile('image') && $request->file('image')->isValid()) // Verificando se foi inserido uma imagem e se essa imagem inserida é válida
+        {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension(); // recebendo a extensão da imagem, por exemplo: .jpg, .png, etc.
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . '.' . $extension; // O md5 é uma função que transforma o conteúdo em um hash
+
+            $requestImage->move(public_path('img/events'), $imageName); // movendo a imagem para uma pasta reservada (a pasta reservada é a events dentro de img)
+
+            $event->image = $imageName; // persistindo o nome da imagem no banco de dados
+        }
 
         $event->save();
 
