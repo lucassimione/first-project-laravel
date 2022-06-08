@@ -200,6 +200,14 @@ header {
     width: 25%;
 }
 
+/* edit page */
+
+.image-preview{
+    width: 100px;
+    margin-top: 10px;
+}
+
+
 /* footer */
 footer {
     text-align: center;

@@ -82,4 +82,31 @@ class EventController extends Controller
         Event::findOrFail($id)->delete();
         return redirect('/dashboard')->with('msg', 'evento deletado com sucesso!');
     }
+
+    public function edit($id)
+    {
+        $event = Event::findOrFail($id);
+        return view('events.edit', ['event' => $event]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+
+        if($request->hasFile('image') && $request->file('image')->isValid()) // Verificando se foi inserido uma imagem e se essa imagem inserida é válida
+        {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension(); // recebendo a extensão da imagem, por exemplo: .jpg, .png, etc.
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . '.' . $extension; // O md5 é uma função que transforma o conteúdo em um hash
+
+            $requestImage->move(public_path('img/events'), $imageName); // movendo a imagem para uma pasta reservada (a pasta reservada é a events dentro de img)
+
+            $data['image'] = $imageName; // persistindo o nome da imagem no banco de dados
+        }
+
+        Event::findOrFail($request->params['id'])->update($data);
+        return redirect('/dashboard')->with('msg', 'evento editado com sucesso!');
+    }
 }
