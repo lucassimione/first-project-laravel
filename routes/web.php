@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ContactController;
 
 
 Route::get('/', [EventController::class, 'index']); // indicando qual controller será acionado a partir da requisição dessa rota
@@ -21,6 +20,5 @@ Route::get('/events/create', [EventController::class, 'create'])->middleware('au
 Route::get('/events/{id}', [EventController::class, 'show']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::post('/events', [EventController::class, 'store']); 
 
-Route::get('/contact', [ContactController::class, 'index']); // indicando qual controller será acionado a partir da requisição dessa rota
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
-
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
